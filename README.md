@@ -1,8 +1,12 @@
-# Word Ladder
+# **Word Ladder**
 
-A word ladder is a connection from one word to another, formed by changing one
-letter at a time, with the constraint that each transformation yields a new valid word. For example,
-here is a word ladder connecting "code" to "data".
+**Type:** Algorithm / CLI · **Tech Stack:** C++ (STL) · **Status:** Completed
+
+## **Overview:**
+Finds all shortest word ladders between a start and end word using a lexicon and **breadth-first search (BFS)**.
+
+## **Examples:**
+Here is a word ladder connecting "code" to "data".
 
 ```txt
 code -> cade -> cate -> date -> data
@@ -25,5 +29,18 @@ work wort port pert peat plat play
 work wort wert pert peat plat play
 ```
 
-This project takes a start word, a destination word, and a lexicon, and returns a vector of valid word ladders. By using [breadth-first search][bfs], we can find solutions without an issue.
+## **How it works:**
 
+* Builds adjacency by single-letter mutations present in the lexicon.
+* Runs BFS from the start word, recording parents to reconstruct paths of **minimal length only**.
+* Returns a `std::vector<std::vector<std::string>>` of ladders.
+
+## **Features:**
+
+* Multiple shortest solutions returned deterministically (sorted).
+* Input validation (equal lengths, words in lexicon, reachable checks).
+* Optional pruning (visited per level) to avoid revisiting longer paths.
+
+**Complexity:** ~(O(N \cdot L \cdot \Sigma)) where (N) = lexicon size, (L) = word length, (\Sigma) = alphabet size; memory proportional to visited set and parent map.
+
+**Example:** `code → data` yields `code→cade→cate→date→data`; `work → play` returns all minimal ladders.
