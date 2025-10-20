@@ -40,7 +40,3 @@ work wort wert pert peat plat play
 * Multiple shortest solutions returned deterministically (sorted).
 * Input validation (equal lengths, words in lexicon, reachable checks).
 * Optional pruning (visited per level) to avoid revisiting longer paths.
-
-**Complexity:** ~(O(N \cdot L \cdot \Sigma)) where (N) = lexicon size, (L) = word length, (\Sigma) = alphabet size; memory proportional to visited set and parent map.
-
-**Example:** `code → data` yields `code→cade→cate→date→data`; `work → play` returns all minimal ladders.
